@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative_layout_fighter_card"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dddddd"
+    android:padding="1dp"
+    android:layout_marginBottom="9dp">
+
+    <LinearLayout
+        android:id="@+id/linear_layout_main_details"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#dddddd"
+        android:padding="1dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:id="@+id/fighter_thumbnail"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/tv_first_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="First name"/>
+
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Nickname"/>
+
+            <TextView
+                android:id="@+id/tv_last_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Last Name"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ronandoyle.ie.ufcrankings.Seperator
+        android:id="@+id/view_seperator"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:background="#dddddd"
+        android:layout_below="@+id/linear_layout_main_details"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="25dp"
+        android:paddingStart="25dp"
+        android:paddingRight="25dp"
+        android:paddingEnd="25dp"
+        app:size="2dp"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/view_seperator"
+        android:background="#dddddd"
+        android:padding="1dp">
+
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="Rank #"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:text="Record"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
