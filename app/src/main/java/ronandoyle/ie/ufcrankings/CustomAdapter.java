@@ -45,15 +45,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         if (fighter.getThumbnail() != null) {
             holder.thumbnail.setVisibility(View.VISIBLE);
 
-            Picasso.with(mContext).load(fighter.getThumbnail());
+            Picasso.with(mContext).load(fighter.getThumbnail()).into(holder.thumbnail);
         }
 
         holder.firstName.setText(fighter.getFirstName());
-        holder.nickName.setText(fighter.getNickname());
-        holder.lastName.setText(fighter.getLastName());
-        holder.rank.setText(fighter.getRank());
 
 
+        if (fighter.getNickname() != null) {
+            holder.nickName.setText("\"" + fighter.getNickname() + "\"");
+            holder.nickName.setVisibility(View.VISIBLE);
+        } else {
+            holder.nickName.setText(fighter.getLastName());
+            holder.lastName.setVisibility(View.INVISIBLE);
+        }
+
+        holder.weightclass.setText(fighter.getWeightClass());
     }
 
     @Override
@@ -67,7 +73,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         TextView firstName;
         TextView nickName;
         TextView lastName;
-        TextView rank;
+        TextView weightclass;
 
         public ViewHolder(View v) {
             super(v);
@@ -76,7 +82,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             firstName = (TextView) v.findViewById(R.id.tv_first_name);
             nickName = (TextView) v.findViewById(R.id.tv_nickname);
             lastName = (TextView) v.findViewById(R.id.tv_last_name);
-            rank = (TextView) v.findViewById(R.id.tv_rank);
+            weightclass = (TextView) v.findViewById(R.id.tv_weightclass);
         }
     }
 }

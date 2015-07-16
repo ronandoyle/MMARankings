@@ -22,6 +22,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class MainActivity extends Activity {
@@ -100,7 +102,8 @@ public class MainActivity extends Activity {
         @Override
         protected JSONObject doInBackground(String... params) {
 
-
+            Pattern pattern = Pattern.compile("^_");
+            Matcher matcher;
             URL url = null;
             try {
                 url = new URL(params[0]);
@@ -108,7 +111,6 @@ public class MainActivity extends Activity {
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.connect();
-
 
                 // Read the input stream into a String
                 InputStream inputStream = urlConnection.getInputStream();
@@ -136,8 +138,7 @@ public class MainActivity extends Activity {
                 final String RECORD_WINS = "wins";
                 final String RECORD_LOSSES = "losses";
                 final String RECORD_DRAWS = "wins";
-                final String POUND_FOR_POUND = "pound_for_pound";
-                final String RANK = "rank";
+                final String WEIGHTCLASS = "weight_class";
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     Fighter newFighter = new Fighter();
@@ -149,8 +150,8 @@ public class MainActivity extends Activity {
                     newFighter.setWins(fighterObject.getInt(RECORD_WINS));
                     newFighter.setLosses(fighterObject.getInt(RECORD_LOSSES));
                     newFighter.setDraws(fighterObject.getInt(RECORD_DRAWS));
-                    newFighter.setPoundForPoundRank(POUND_FOR_POUND);
-                    newFighter.setRank(RANK);
+
+                    newFighter.setWeightClass(fighterObject.getString(WEIGHTCLASS).replaceAll("_", " "));
 
                     String thumbNail = fighterObject.getString(THUMBNAIL);
                     thumbNail = thumbNail.substring(0, thumbNail.lastIndexOf("?"));
