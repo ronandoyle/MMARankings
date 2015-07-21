@@ -55,7 +55,7 @@
 
         </LinearLayout>
 
-        <ronandoyle.ie.ufcrankings.Seperator
+        <ronandoyle.ie.mmarankings.Seperator
             android:id="@+id/view_seperator"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"

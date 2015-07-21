@@ -1,4 +1,4 @@
-package ronandoyle.ie.ufcrankings;
+package ronandoyle.ie.mmarankings;
 
 import android.content.Context;
 import android.content.res.TypedArray;

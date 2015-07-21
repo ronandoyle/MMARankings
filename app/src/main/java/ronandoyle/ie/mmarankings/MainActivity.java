@@ -1,4 +1,4 @@
-package ronandoyle.ie.ufcrankings;
+package ronandoyle.ie.mmarankings;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -54,8 +54,12 @@ public class MainActivity extends Activity {
             fragmentTransaction.commit();
         }
 
+        GetAllFighters getAllFighters = new GetAllFighters();
+        getAllFighters.execute("http://ufc-data-api.ufc.com/api/v3/iphone/fighters");
+
         GetData getData = new GetData(this);
         getData.execute("http://ufc-data-api.ufc.com/api/v3/iphone/fighters/title_holders");
+
     }
 
     @Override
@@ -79,6 +83,53 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private class GetAllFighters extends AsyncTask<String, Void, JSONObject> {
+
+        @Override
+        protected JSONObject doInBackground(String... strings) {
+            URL url = null;
+            try {
+                url = new URL(strings[0]);
+
+                // Create the request to OpenWeatherMap, and open the connection
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.connect();
+
+                // Read the input stream into a String
+                InputStream inputStream = urlConnection.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null) {
+                    // Nothing to do.
+                }
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+
+                    buffer.append(line + "\n");
+                }
+
+                String jsonData = buffer.toString();
+
+                JSONArray jsonArray = new JSONArray(jsonData);
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+    }
+
 
     private class GetData extends AsyncTask<String, Void, JSONObject> {
 

@@ -1,8 +1,4 @@
-package ronandoyle.ie.ufcrankings;
-
-import android.text.TextUtils;
-
-import org.w3c.dom.Text;
+package ronandoyle.ie.mmarankings;
 
 import java.net.URL;
 

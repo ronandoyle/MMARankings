@@ -1,6 +1,4 @@
-package ronandoyle.ie.ufcrankings;
-
-import java.net.URI;
+package ronandoyle.ie.mmarankings;
 
 import retrofit.http.GET;
 
